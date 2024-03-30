@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_app/models/article_model.dart';
+//https://newsapi.org/
 
 class NewsService {
   final Dio dio;
@@ -16,11 +17,7 @@ class NewsService {
       List<ArticleModel> articleList = [];
       for (var article in articles) {
         articleList.add(
-          ArticleModel(
-            image: article["urlToImage"],
-            title: article["title"],
-            subTitle: article["description"],
-          ),
+          ArticleModel.fromJson(article: article),
         );
       }
       return articleList;

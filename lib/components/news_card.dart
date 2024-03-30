@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
+import 'package:news_app/pages/web_view_page.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard({
@@ -10,39 +11,50 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-            articleModel.image ??
-                "https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?t=st=1711658587~exp=1711662187~hmac=f3258a9bf6c5b9dc5ea029a21522c62e06f0e93022433e3a2d5f611868b33760&w=900",
-            height: 200,
-            width: double.infinity,
-            fit: BoxFit.fill,
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) {
+            return WebViewPage(
+              url: articleModel.url,
+            );
+          },
+        ));
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              articleModel.image ?? "http://tiny.cc/fcwkxz",
+              height: 200,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
-        Text(
-          articleModel.title ?? "NULL",
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+          Text(
+            articleModel.title ?? "NULL",
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
-        ),
-        Text(
-          articleModel.subTitle ?? "",
-          maxLines: 2,
-          style: const TextStyle(
-            fontSize: 15,
-            color: Colors.black45,
+          Text(
+            articleModel.subTitle ?? "",
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Colors.black45,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
