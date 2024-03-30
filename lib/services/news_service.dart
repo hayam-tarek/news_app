@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:news_app/models/article_model.dart';
 //https://newsapi.org/
 
@@ -8,8 +9,10 @@ class NewsService {
 
   Future<List<ArticleModel>> getNews({required String category}) async {
     try {
+      await dotenv.load(fileName: ".env");
+      String apiKey = dotenv.env['API_KEY']!;
       final Response response = await dio.get(
-        'https://newsapi.org/v2/top-headlines?country=us&apiKey=4835096eb88948a595f49055c82ca494&category=$category',
+        'https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey&category=$category',
       );
       Map<String, dynamic> jsonData = response.data;
       List<dynamic> articles = jsonData["articles"];

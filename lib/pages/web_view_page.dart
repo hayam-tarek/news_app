@@ -14,6 +14,7 @@ class WebViewPage extends StatefulWidget {
 
 class _WebViewPageState extends State<WebViewPage> {
   final WebViewController webViewController = WebViewController();
+  bool isLoading = true;
   @override
   void initState() {
     webViewController.setJavaScriptMode(JavaScriptMode.unrestricted);
