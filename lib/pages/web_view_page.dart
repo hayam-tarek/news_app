@@ -34,7 +34,7 @@ class _WebViewPageState extends State<WebViewPage> {
             Navigator.pop(context);
           },
           icon: const Icon(
-            Icons.arrow_back_rounded,
+            Icons.close_rounded,
             color: Colors.amber,
             size: 30,
           ),

@@ -55,7 +55,7 @@ class _NewsListSliverBuilderState extends State<NewsListSliverBuilder> {
             ),
           );
         } else {
-          return SliverFillRemaining(
+          return const SliverFillRemaining(
             child: Center(
                 child: CircularProgressIndicator(
               color: Colors.amber,
