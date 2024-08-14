@@ -2,7 +2,7 @@
 
 Stay informed with the latest news using this Flutter application! It provides you with a convenient way to access both general headlines and specific news categories.
 
-## Features:
+## Features
 
 - General News Feed: Discover current events at a glance with the main news feed displayed on the home page.
 - Custom News Categories: Dive deeper into specific topics by browsing through various news categories offered within the app.
